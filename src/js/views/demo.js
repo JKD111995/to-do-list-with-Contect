@@ -7,12 +7,29 @@ import "../../styles/demo.css";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
+	
+	const [textEntered, setTextEntered] = useState("");
+
+
+	
+	  
+	function inputValue(e) {
+			const itemValue = e.target.value;
+			setTextEntered(itemValue);
+		  }
 
 	return (
 		<div className="container">
+			 <input className="field"
+            type="text"
+            onChange={inputValue}
+            onKeyDown={actions.addNewTask}
+            value={textEntered}
+          />
 			<ul className="list-group">
 				{store.demo.map((item, index) => {
 					return (
+						
 						<li
 							key={index}
 							className="list-group-item d-flex justify-content-between"
