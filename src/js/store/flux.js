@@ -2,15 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       demo: [
-        {
-          id: 1,
-          title: "Do the dishes",
-        },
-        {
-          id: 2,
-          title: "Wash car",
-
-        },
+   
       ],
     },
     actions: {
