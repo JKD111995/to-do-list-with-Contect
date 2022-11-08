@@ -1,0 +1,24 @@
+.todo-container {
+    width: 25%;
+    margin: auto;
+    border: 1px solid black;
+    padding: 5px;
+}
+.todo-header {
+    padding: 10px;
+    text-align: center;
+
+}
+.delete-button {
+    color: red;
+    padding-left: 10px;
+    justify-content: right;
+    visibility: hidden;
+}
+.field {
+    width: 100%;
+}
+li:hover span {
+    visibility: visible;
+}
+

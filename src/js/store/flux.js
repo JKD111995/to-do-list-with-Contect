@@ -3,14 +3,13 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       demo: [
         {
-          title: "FIRST",
-          background: "white",
-          initial: "white",
+          id: 1,
+          title: "Do the dishes",
         },
         {
-          title: "SECOND",
-          background: "white",
-          initial: "white",
+          id: 2,
+          title: "Wash car",
+
         },
       ],
     },
@@ -30,19 +29,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         //we have to loop the entire demo array to look for the respective index
         //and change its color
-        const demo = store.demo.map((elm, i) => {
-          if (i === index) elm.background = color;
-          return elm;
-        });
+        // const demo = store.demo.map((elm, i) => {
+        //   if (i === index) elm.background = color;
+        //   return elm;
+        // });
 
         //reset the global store
         setStore({ demo: demo });
       },
 
-      addNewTask: (e) => {
-        if (e.key === "Enter") {
-          console.log("submitted");
-        }
+      addNewTask: (task) => {
+          
+          const store = getStore();
+          const demo = store.demo;
+          const newtask = {id: demo.length + 1, title: task}
+          demo.push(newtask)
+          setStore({ demo: demo });
+      },
+
+      deleteTask: (id) => {
+        const store = getStore();
+
+      const demo = store.demo.filter((item, index) => {
+        return index != id
+      })
+      setStore({ demo: demo });
       },
     },
   };

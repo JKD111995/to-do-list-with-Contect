@@ -16,16 +16,26 @@ export const Demo = () => {
 	function inputValue(e) {
 			const itemValue = e.target.value;
 			setTextEntered(itemValue);
+			console.log(itemValue)
+			
 		  }
+
+	const addNewTaskWrapper = (event) => {
+			event.preventDefault();
+			actions.addNewTask(textEntered)
+			setTextEntered('');
+		}
 
 	return (
 		<div className="container">
+		
+			<form  onSubmit={ addNewTaskWrapper}>
 			 <input className="field"
             type="text"
             onChange={inputValue}
-            onKeyDown={actions.addNewTask}
             value={textEntered}
           />
+		  </form>
 			<ul className="list-group">
 				{store.demo.map((item, index) => {
 					return (
@@ -34,9 +44,7 @@ export const Demo = () => {
 							key={index}
 							className="list-group-item d-flex justify-content-between"
 							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
+								<span>{item.title}</span>
 							{// Conditional render example
 							// Check to see if the background is orange, if so, display the message
 							item.background === "orange" ? (
@@ -44,8 +52,8 @@ export const Demo = () => {
 									Check store/flux.js scroll to the actions to see the code
 								</p>
 							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
+							<button className="btn btn-success" onClick={() => actions.deleteTask(index)}>
+								Delete Task
 							</button>
 						</li>
 					);
