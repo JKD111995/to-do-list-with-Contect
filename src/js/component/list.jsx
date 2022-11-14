@@ -5,8 +5,8 @@ import Inputs from "./Inputs.jsx";
 
 export const ToDoList = () => {
   function createPost() {
-    //Create server page of name usertest197
-    fetch("https://assets.breatheco.de/apis/fake/todos/user/usertest197", {
+    //Create server page of name user111995
+    fetch("https://assets.breatheco.de/apis/fake/todos/user/user111995", {
       method: "POST",
       body: JSON.stringify({}),
       headers: {
@@ -29,7 +29,7 @@ export const ToDoList = () => {
 
   //Delete server page and all tasks
   function clearFetch() {
-    fetch("https://assets.breatheco.de/apis/fake/todos/user/usertest197", {
+    fetch("https://assets.breatheco.de/apis/fake/todos/user/user111995", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
