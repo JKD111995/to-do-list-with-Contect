@@ -1,9 +1,35 @@
-const getState = ({ getStore, getActions, setStore }) => {
+// const getState = ({ getStore, getActions, setStore }) => {
+  const getState = ({ getStore, getActions, setStore }) => {
+    function getFetch() {
+      fetch("https://assets.breatheco.de/apis/fake/todos/user/usertest197", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((resp) => {
+          console.log(resp.ok);
+          console.log(resp.status);
+          return resp.json();
+        })
+        .then((data) => {
+          const tasks = data.map((item, index) => {
+            return item.label;
+          });
+          setStore({ fetchTasks: [...tasks] });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
   return {
     store: {
       demo: [
    
       ],
+      list: [],
+      fetchTasks: [],
     },
     actions: {
       // Use getActions to call a function within a fuction
